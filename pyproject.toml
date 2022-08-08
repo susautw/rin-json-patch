@@ -7,11 +7,12 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "NAME"
-description = "DESCRIPTION"
+name = "rin-jsonutils"
+version = "0.1a"
+description = "Add custom JSON coders and provide functions to set and get the default json coders"
 readme = "README.md"
-requires-python = ">=PYTHON_VERSION"
-keywords = []
+requires-python = ">=3.6"
+keywords = ["json", "utils"]
 license = {text = "MIT License"}
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -19,18 +20,9 @@ classifiers = [
     "Operating System :: OS Independent"
 ]
 
-dependencies = [
-    "DEPENDENCIES"
-]
-
 [project.optional-dependencies]
-NAME = ["PROJECTS"]
-
-[project.scripts]
-my-script = "my_package.module:function"
+numpy = ["numpy"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["my_package*"]
-exclude = ["my_package.tests*"]
-namespaces = false
+namespaces = true
