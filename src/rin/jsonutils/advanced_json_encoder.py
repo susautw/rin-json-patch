@@ -1,6 +1,6 @@
 import abc
 import enum
-from typing import Dict, Any
+from typing import Dict, Any, List
 
 from json import JSONEncoder
 from .typing import JSONSerializable, JSONType
@@ -48,9 +48,9 @@ class ResolveError(Exception):
 
 class AdvancedJSONEncoder(JSONEncoder):
     context: Dict[str, Any]
-    _uninitialized_resolvers: dict[str, IResolver]
-    _resolvers: list[IResolver]
-    _resolver_name_map: dict[str, IResolver]
+    _uninitialized_resolvers: Dict[str, IResolver]
+    _resolvers: List[IResolver]
+    _resolver_name_map: Dict[str, IResolver]
 
     def __init__(
             self, *,

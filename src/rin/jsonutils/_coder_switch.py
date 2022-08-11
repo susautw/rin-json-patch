@@ -1,4 +1,7 @@
 from json import JSONEncoder, JSONDecoder
+
+from typing import Tuple
+
 from . import set_default_encoder, set_default_decoder
 
 
@@ -14,5 +17,5 @@ class CoderSwitch:
     def register(self, profile_name: str, encoder: JSONEncoder, decoder: JSONDecoder) -> None:
         self.coders[profile_name] = (encoder, decoder)
 
-    def get_coder(self, profile_name: str) -> tuple[JSONEncoder, JSONDecoder]:
+    def get_coder(self, profile_name: str) -> Tuple[JSONEncoder, JSONDecoder]:
         return self.coders[profile_name]
