@@ -33,7 +33,7 @@ assert json.dumps(datetime.fromordinal(1)) == '"0001-01-01T00:00:00"' # datetime
 ```
 
 ### Context in the advanced encoder
-Context is a dict store some option for resolvers. 
+Context is a dict store encoder-specific options for resolvers. 
 For example, setting the 'datetime.format' can affect the behavior when encoding datetime objects.
 ```python
 import json
