@@ -86,7 +86,6 @@ class DateTimeResolver(IResolver):
 
 
 class NumpyResolver(IResolver, _Singleton):
-    _np = None
 
     def get_priority(self) -> int:
         return ResolverPriority.HIGH
@@ -94,12 +93,12 @@ class NumpyResolver(IResolver, _Singleton):
     def initialize(self) -> bool:
         try:
             import numpy as np
-            self._np = np
             return True
         except ImportError:
             return False
 
     def resolve(self, o, context: Dict[str, Any]) -> JSONType:
-        if isinstance(o, self._np.ndarray):
+        import numpy as np
+        if isinstance(o, np.ndarray):
             return o.tolist()
         raise ResolveError()

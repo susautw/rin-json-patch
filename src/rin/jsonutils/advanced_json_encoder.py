@@ -3,7 +3,7 @@ import enum
 from typing import Dict, Any
 
 from json import JSONEncoder
-from .typing import JSONSerializable, JSONType
+from .typing import JSONType
 
 __all__ = ["AdvancedJSONEncoder", "IResolver", "ResolverPriority", "ResolveError"]
 
@@ -38,7 +38,8 @@ class IResolver(abc.ABC):
     @abc.abstractmethod
     def resolve(self, o, context: Dict[str, Any]) -> JSONType:
         """
-        :raises ResolveError
+        :raises ResolveError when cannot resolve the object.
+                 If you aren't resolves the object, you MUST raise this exception.
         """
 
 
@@ -74,8 +75,6 @@ class AdvancedJSONEncoder(JSONEncoder):
 
     def default(self, o):
         self.initialize_resolvers()
-        if isinstance(o, JSONSerializable):
-            return o.__json__()
         for r in self._resolvers:
             try:
                 return r.resolve(o, self.context)
