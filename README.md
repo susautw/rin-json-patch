@@ -4,6 +4,10 @@
 **rin-jsonutils** is a toolkit that adds custom JSON coders and provides functions to set/get the default JSON coders
 </div>
 
+# Links
+- [GitHub](https://github.com/susautw/rin-jsonutils)
+- [PyPI](https://pypi.org/project/rin-jsonutils/)
+
 ## Installation
 ```sh
 pip install rin-jsonutils
