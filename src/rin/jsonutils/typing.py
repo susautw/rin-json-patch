@@ -1,5 +1,5 @@
 import abc
-from typing import Union, List, Tuple, Dict
+from typing import Union, List, Tuple, Dict, Any
 
 __all__ = [
     "JSONSerializable", "JSONNull", "JSONString", "JSONNumber", "JSONBoolean", "JSONArray", "JSONObject", "JSONType"
@@ -8,7 +8,7 @@ __all__ = [
 
 class JSONSerializable(abc.ABC):
     @abc.abstractmethod
-    def __json__(self) -> "JSONType": ...
+    def __json__(self, context: Dict[str, Any]) -> "JSONType": ...
 
     @classmethod
     def __subclasshook__(cls, subclass) -> bool:

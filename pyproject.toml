@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rin-jsonutils"
-version = "1.0.2"
+version = "1.1.0"
 urls = {GitHub = "https://github.com/susautw/rin-jsonutils"}
 description = "Add custom JSON coders and provide functions to set and get the default json coders"
 readme = "README.md"

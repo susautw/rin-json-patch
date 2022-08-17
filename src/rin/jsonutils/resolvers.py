@@ -27,7 +27,7 @@ class JSONSerializableResolver(IResolver, _Singleton):
 
     def resolve(self, o, context: Dict[str, Any]) -> JSONType:
         if isinstance(o, JSONSerializable):
-            return o.__json__()
+            return o.__json__(context)
         raise ResolveError()
 
 

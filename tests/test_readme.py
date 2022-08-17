@@ -68,15 +68,16 @@ def test_custom_object_with_json_serializable(json, jsonutils):
         def __init__(self, i: int):
             self.i = i
 
-        def __json__(self) -> jsonutils.JSONType:  # implement this method is required.
-            if self.show_name:
+        def __json__(self, context: Dict[str, Any]) -> jsonutils.JSONType:  # implement this method is required.
+            show_name = context.get("my_object.show_name", self.show_name)
+            if show_name:
                 return {"name": "MyObject", "i": self.i}
             else:
                 return {"i": self.i}
 
     encoder = jsonutils.get_coder("advanced").encoder
     assert encoder.encode(MyObject(1)) == '{"name": "MyObject", "i": 1}'
-    MyObject.show_name = False
+    encoder.context['my_object.show_name'] = False
     assert encoder.encode(MyObject(1)) == '{"i": 1}'
 
 
