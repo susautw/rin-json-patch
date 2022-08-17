@@ -75,7 +75,7 @@ class DateTimeResolver(IResolver):
 
     def resolve(self, o, context: Dict[str, Any]) -> JSONType:
         if isinstance(o, datetime):
-            datetime_format = context.get("datetime_format", self.datetime_format)
+            datetime_format = context.get("datetime.format", self.datetime_format)
             if datetime_format is None:
                 return o.isoformat()
             if isinstance(datetime_format, str):
