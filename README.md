@@ -50,7 +50,7 @@ assert json.dumps(datetime.fromordinal(1)) == '"0001-01-01"'
 ```
 
 ### Add Custom resolver to the advanced encoder
-You can write your own custom resolver to encode the object.
+You can write a custom resolver to encode something.
 
 
 [//]: # (TODO: )
@@ -99,7 +99,7 @@ encoder.context['my_object.show_name'] = False  # change context
 assert encoder.encode(MyObject(1)) == '{"i": 1}'
 ```
 
-### Simpler way to make object JSON serializable
+### A Simpler way to make object JSON serializable
 You can write method `__json__` for an object. Instead of create a resolver.
 ```python
 from typing import Dict, Any
